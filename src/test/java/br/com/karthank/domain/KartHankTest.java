@@ -20,8 +20,9 @@ public class KartHankTest {
     @Test
     public void getHora_ComListaDeVoltas_deveRetornarAMaisRapida() throws Exception {
 
-        String strHora = "23:49:08.277";
-        LocalTime time = kartHank.getHora(Arrays.asList(strHora, strHora));
+        String strHora1 = "23:49:08.277";
+        String strHora2 = "23:39:08.277";
+        LocalTime time = kartHank.getHora(Arrays.asList(strHora1, strHora2));
         Assert.assertThat(time, Matchers.is(kartHank.getMelhorVolta()));
     }
 }
