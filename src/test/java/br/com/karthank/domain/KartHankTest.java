@@ -1,7 +1,12 @@
 package br.com.karthank.domain;
 
+import org.hamcrest.Matchers;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.time.LocalTime;
+import java.util.Arrays;
 
 public class KartHankTest {
 
@@ -13,7 +18,10 @@ public class KartHankTest {
     }
 
     @Test
-    public void getVoltaMaisRapida_ComListaDeVoltas_deveRetornarAMaisRapida() throws Exception {
-        
+    public void getHora_ComListaDeVoltas_deveRetornarAMaisRapida() throws Exception {
+
+        String strHora = "23:49:08.277";
+        LocalTime time = kartHank.getHora(Arrays.asList(strHora, strHora));
+        Assert.assertThat(time, Matchers.is(kartHank.getMelhorVolta()));
     }
 }
