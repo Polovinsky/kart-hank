@@ -1,12 +1,13 @@
 package br.com.karthank.domain;
 
+import br.com.karthank.domain.model.Volta;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.LocalTime;
-import java.util.Arrays;
+import java.io.File;
+import java.util.List;
 
 public class KartHankTest {
 
@@ -18,11 +19,10 @@ public class KartHankTest {
     }
 
     @Test
-    public void getHora_ComListaDeVoltas_deveRetornarAMaisRapida() throws Exception {
+    public void startCorrida_comArquivoRaceLog_deveRetornarInfoCadaPiloto() throws Exception {
 
-        String strHora1 = "23:49:08.277";
-        String strHora2 = "23:39:08.277";
-        LocalTime time = kartHank.getHora(Arrays.asList(strHora1, strHora2));
-        Assert.assertThat(time, Matchers.is(kartHank.getMelhorVolta()));
+        String file = "src/main/resources/race-log.txt";
+        List<Volta> race = kartHank.startRace(file);
+        Assert.assertThat(race, Matchers.not(Matchers.empty()));
     }
 }

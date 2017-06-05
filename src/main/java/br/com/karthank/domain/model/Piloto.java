@@ -2,7 +2,11 @@ package br.com.karthank.domain.model;
 
 public class Piloto {
 
-    private int codigo;
+    private long id;
     private String nome;
-    private Corrida corrida;
+
+    public Piloto(long id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
 }
