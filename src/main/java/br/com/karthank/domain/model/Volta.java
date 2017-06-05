@@ -30,4 +30,9 @@ public class Volta {
     public Piloto getPiloto() {
         return piloto;
     }
+
+    @Override
+    public String toString() {
+        return hora + "  " + piloto.getId() + " - " + piloto.getNome() + "  " + volta + "  " + tempoVolta + "  " + velocidadeMedia;
+    }
 }

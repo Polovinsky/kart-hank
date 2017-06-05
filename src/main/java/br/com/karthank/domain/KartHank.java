@@ -26,7 +26,7 @@ public class KartHank {
         this.LOCAL_FILE = LOCAL_FILE;
     }
 
-    public List<Volta> startRace() throws FileNotFoundException {
+    protected List<Volta> startRace() throws FileNotFoundException {
 
         List<Volta> voltas = new ArrayList<>();
         Scanner scanner = new Scanner(new File(LOCAL_FILE), "UTF-8");
@@ -46,17 +46,23 @@ public class KartHank {
         return voltas;
     }
 
-    public List<Volta> getPilotosVoltaQuatro(List<Volta> voltas) {
+    protected List<Volta> getPilotosVoltaQuatro(List<Volta> voltas) {
         Stream<Volta> campeoes = voltas.stream().filter(volta -> volta.getVolta() == 4);
         return campeoes.collect(Collectors.toList());
     }
 
-    public List<Volta> ordemPorPilotoMaisRapido(List<Volta> pilotosVoltaQuatro) {
+    protected List<Volta> ordemPorPilotoMaisRapido(List<Volta> pilotosVoltaQuatro) {
         Collections.sort(pilotosVoltaQuatro, (o1, o2) -> {
             if (o1.getTempoVolta().isAfter(o2.getTempoVolta())) return 1;
             if (o1.getTempoVolta().isBefore(o2.getTempoVolta())) return -1;
             return 0;
         });
         return pilotosVoltaQuatro;
+    }
+
+    public List<Volta> hanking() throws FileNotFoundException {
+        List<Volta> todasAsVoltas = startRace();
+        List<Volta> pilotos4Voltas = getPilotosVoltaQuatro(todasAsVoltas);
+        return ordemPorPilotoMaisRapido(pilotos4Voltas);
     }
 }
