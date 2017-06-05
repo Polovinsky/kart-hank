@@ -7,7 +7,7 @@ public class Volta {
 
     private LocalTime hora;
     private Piloto piloto;
-    private int volta;
+    private Integer volta;
     private LocalTime tempoVolta;
     private BigDecimal velocidadeMedia;
 
@@ -17,5 +17,17 @@ public class Volta {
         this.volta = volta;
         this.tempoVolta = tempoVolta;
         this.velocidadeMedia = velocidadeMedia;
+    }
+
+    public int getVolta() {
+        return volta;
+    }
+
+    public LocalTime getTempoVolta() {
+        return tempoVolta;
+    }
+
+    public Piloto getPiloto() {
+        return piloto;
     }
 }
